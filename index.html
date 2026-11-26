@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pierre Florent BOLOUVI — Développeur & fondateur HOUETOR</title>
+<meta name="description" content="Portfolio de Pierre Florent BOLOUVI, étudiant en MI2 à l'ENS Natitingou (Bénin) et développeur. HOUETOR : transformer des idées en produits technologiques.">
+<meta property="og:title" content="Pierre Florent BOLOUVI — Portfolio">
+<meta property="og:description" content="Transformer des idées en produits technologiques. HOUETOR, Houetor Connect, JuriAgent, EasyHealth…">
+<meta property="og:image" content="assets/photo-pierre.png">
+<link rel="icon" href="assets/logo-houetor.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · pre-emit critique: P4 H5 E5 S5 R4 V5
+   Hallmark · macrostructure: Long Document interactif · theme: custom HOUETOR
+   audience: recruteurs/clients/partenaires · use: explorer les projets + contacter · tone: éditorial technique immersif */
+:root{
+  --paper:oklch(98% .008 250); --paper2:oklch(95% .012 250); --card:oklch(100% 0 0);
+  --ink:oklch(22% .07 262); --navy:oklch(30% .11 262); --navy-deep:oklch(17% .08 262);
+  --blue:oklch(52% .13 245); --gold:oklch(72% .14 82); --gold-deep:oklch(56% .13 78);
+  --muted:oklch(48% .03 258); --line:oklch(88% .015 250); --focus:oklch(58% .16 245);
+  --glow:oklch(72% .14 82 / .35);
+  --fd:"Space Grotesk",system-ui,sans-serif; --fb:"Inter",system-ui,sans-serif; --fm:"JetBrains Mono",ui-monospace,monospace;
+  --r:16px; --max:76rem;
+}
+[data-theme="dark"]{
+  --paper:oklch(16% .04 262); --paper2:oklch(20% .045 262); --card:oklch(21% .05 262);
+  --ink:oklch(93% .01 250); --muted:oklch(72% .03 255); --line:oklch(30% .05 262);
+  --navy:oklch(70% .1 250); --gold-deep:oklch(76% .13 82);
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.0625rem;line-height:1.65;transition:background .4s,color .4s}
+::selection{background:var(--gold);color:var(--navy-deep)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--fd);font-style:normal;line-height:1.1;margin:0;overflow-wrap:anywhere;min-width:0}
+a{color:var(--navy)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:1.5rem}
+button{font:inherit;cursor:pointer}
+
+/* progress + spotlight */
+#progress{position:fixed;inset:0 auto auto 0;height:4px;width:0;background:linear-gradient(90deg,var(--blue),var(--gold));z-index:60}
+#spot{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,var(--glow),transparent 65%);transform:translate(-50%,-50%);opacity:.55;left:-999px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in oklch,var(--paper) 86%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:1rem;padding-block:.7rem}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink);font-family:var(--fd);font-weight:700;white-space:nowrap}
+.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.nav-links{margin-left:auto;display:flex;gap:1.4rem}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.95rem;white-space:nowrap;padding-block:.2rem;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);border-bottom-color:var(--gold)}
+.icon-btn{background:var(--paper2);border:1px solid var(--line);color:var(--ink);border-radius:999px;width:42px;height:42px;display:grid;place-items:center;font-size:1.05rem;flex:none}
+.icon-btn:hover{border-color:var(--gold)}
+.btn{display:inline-block;background:var(--navy);color:var(--paper);text-decoration:none;font-weight:600;padding:.68rem 1.2rem;border-radius:999px;white-space:nowrap;border:0;transition:transform .18s,box-shadow .18s;will-change:transform}
+[data-theme="dark"] .btn{background:var(--gold);color:var(--navy-deep)}
+.btn:hover{box-shadow:0 10px 28px -8px var(--glow)}
+.btn-gold{background:var(--gold)!important;color:var(--navy-deep)!important}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+[data-theme="dark"] .btn-ghost{background:transparent;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;overflow:clip;background:var(--navy-deep);color:oklch(96% .01 250);border-radius:0 0 2rem 2rem}
+#bg{position:absolute;inset:0;width:100%;height:100%;opacity:.85}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--navy-deep));pointer-events:none}
+.hero-in{position:relative;z-index:2;padding-block:4.5rem 4rem}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);gap:3rem;align-items:center}
+.eyebrow{font-family:var(--fm);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.4rem);font-weight:700;letter-spacing:-.02em}
+.hero h1 .gold{color:var(--gold)}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px oklch(85% .04 250)}
+.lede{font-size:1.22rem;color:oklch(84% .03 250);max-width:34rem;margin:1.4rem 0}
+.lede strong{color:#fff}
+.cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+.hero .btn-ghost{color:#fff;border-color:oklch(60% .05 260)}
+.counters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;max-width:32rem;margin-top:2.6rem}
+.counter{border:1px solid oklch(40% .06 262);border-radius:var(--r);padding:1rem;background:oklch(22% .07 262 / .65);backdrop-filter:blur(6px)}
+.counter b{font-family:var(--fd);font-size:1.9rem;display:block;line-height:1;color:var(--gold)}
+.counter span{font-size:.85rem;color:oklch(78% .03 250)}
+.portrait{position:relative;transform-style:preserve-3d;will-change:transform}
+.portrait .frame{border-radius:1.4rem;overflow:hidden;border:1px solid oklch(45% .07 262);box-shadow:0 30px 70px -20px oklch(0% 0 0 / .6)}
+.portrait img.ph{aspect-ratio:4/5;object-fit:cover;object-position:top;width:100%;scale:1.06}
+.chip{position:absolute;display:flex;align-items:center;gap:.5rem;background:oklch(98% .01 250);color:var(--navy-deep);border-radius:999px;padding:.45rem .85rem;font-size:.84rem;font-weight:600;box-shadow:0 14px 34px -10px oklch(0% 0 0/.5)}
+.chip img{width:22px;height:22px;border-radius:50%;object-fit:cover}
+.chip.c1{top:1.1rem;left:-1rem}.chip.c2{bottom:1.4rem;right:-.7rem;background:var(--gold)}
+.wave{display:block;width:100%;height:56px;margin-top:3rem;opacity:.9}
+
+/* marquee */
+.marquee{overflow:clip;border-block:1px solid var(--line);padding-block:.85rem;background:var(--paper2)}
+.marquee-track{display:flex;gap:2.6rem;width:max-content;animation:scroll 26s linear infinite;font-family:var(--fm);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* chapters */
+.chapter{padding-block:4.5rem;border-top:1px solid var(--line);position:relative;z-index:1}
+.ch-head{display:grid;grid-template-columns:4.6rem minmax(0,1fr);gap:1.4rem;margin-bottom:2.6rem;align-items:start}
+.ch-num{font-family:var(--fm);font-weight:700;color:var(--navy-deep);background:var(--gold);border-radius:999px;width:3.3rem;height:3.3rem;display:grid;place-items:center;box-shadow:0 8px 22px -6px var(--glow)}
+.ch-head h2{font-size:clamp(1.7rem,3.5vw,2.4rem)}
+.ch-head p{color:var(--muted);margin:.4rem 0 0;max-width:42rem}
+.prose{max-width:44rem}.prose p{margin:0 0 1rem}
+blockquote{margin:2rem 0;padding:1.5rem;border-left:4px solid var(--gold);background:var(--paper2);border-radius:0 var(--r) var(--r) 0;font-family:var(--fd);font-size:1.3rem;line-height:1.4}
+
+/* explorer */
+.explorer{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.6rem}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.fbtn{background:var(--card);border:1.5px solid var(--line);color:var(--ink);border-radius:999px;padding:.5rem 1rem;font-weight:600;white-space:nowrap;transition:.18s}
+.fbtn:hover{border-color:var(--gold)}
+.fbtn[aria-pressed="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+[data-theme="dark"] .fbtn[aria-pressed="true"]{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+.fbtn small{font-family:var(--fm);opacity:.75;margin-left:.3rem}
+.search{margin-left:auto;display:flex;align-items:center;gap:.5rem;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:.5rem 1rem;min-width:min(19rem,100%)}
+.search input{border:0;background:transparent;color:var(--ink);font:inherit;width:100%;outline:none}
+.search kbd{font-family:var(--fm);font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:.05rem .35rem;color:var(--muted)}
+#noresult{display:none;border:1.5px dashed var(--line);border-radius:var(--r);padding:2rem;text-align:center;color:var(--muted)}
+
+/* cards */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+.card{--mx:50%;--my:50%;position:relative;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;background:var(--card);display:flex;flex-direction:column;gap:.7rem;transform-style:preserve-3d;will-change:transform;overflow:clip}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(340px circle at var(--mx) var(--my),var(--glow),transparent 65%);opacity:0;transition:opacity .25s;pointer-events:none}
+.card:hover::before{opacity:.5}
+.card h3{font-size:1.35rem}.card p{color:var(--muted);margin:0;flex:1}
+.type{font-family:var(--fm);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.badge{align-self:flex-start;font-size:.78rem;font-weight:600;padding:.22rem .65rem;border-radius:999px;background:var(--paper2);color:var(--ink);border:1px solid var(--line)}
+.badge-live{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)}
+.card .actions{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.visit{font-weight:600;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--gold);white-space:nowrap}
+.visit:hover{color:var(--gold-deep)}
+.details{background:none;border:1.5px solid var(--line);color:var(--ink);border-radius:999px;padding:.42rem .9rem;font-weight:600;white-space:nowrap}
+.details:hover{border-color:var(--gold)}
+.card.feature{grid-column:1/-1;background:var(--navy-deep);color:oklch(95% .01 250);border-color:var(--navy-deep)}
+.card.feature p{color:oklch(83% .03 250)}.card.feature .type{color:var(--gold)}
+.card.feature .visit{color:#fff}.card.feature .details{color:#fff;border-color:oklch(50% .06 262)}
+.card[hidden],.list-card[hidden]{display:none}
+.list-cards{display:grid;gap:1rem}
+.list-card{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;background:var(--card);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:start;overflow:clip}
+.list-card h3{font-size:1.15rem;margin:.2rem 0 .3rem}.list-card p{color:var(--muted);margin:0;max-width:44rem}
+.list-card .side{display:grid;gap:.6rem;justify-items:end}
+
+/* skills / timeline */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.6rem}
+.skill h3{font-size:1.05rem;margin-bottom:.9rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0;padding:0}
+.tags button{border:1px solid var(--line);background:var(--paper2);color:var(--ink);border-radius:999px;padding:.3rem .8rem;font-size:.9rem;transition:.15s}
+.tags button:hover,.tags button.on{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);transform:translateY(-1px)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.8rem;padding-block:.65rem;border-bottom:1px dashed var(--line)}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--fm);color:var(--gold-deep);font-weight:700}
+.timeline{list-style:none;margin:0;padding:0;max-width:46rem}
+.timeline li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:1.4rem;padding:1.1rem;border:1px solid transparent;border-bottom-color:var(--line);border-radius:var(--r);transition:.18s}
+.timeline li:hover{background:var(--card);border-color:var(--line);transform:translateX(6px)}
+.timeline .when{font-family:var(--fm);font-size:.88rem;color:var(--gold-deep);font-weight:700}
+.timeline p{margin:0;color:var(--muted)}.timeline strong{color:var(--ink)}
+
+/* contact/footer/modal/toast/palette */
+.contact{background:var(--navy-deep);color:oklch(96% .01 250);border-radius:1.4rem;padding:3rem;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:3rem;align-items:center;position:relative;overflow:clip}
+.contact h2{font-size:clamp(1.6rem,3vw,2.2rem)}.contact p{color:oklch(82% .03 250)}
+.contact-links{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.contact-links a{color:#fff;text-decoration:none;border-bottom:1.5px solid var(--gold);white-space:nowrap}
+.copy-btn{background:oklch(30% .07 262);color:#fff;border:1px solid oklch(45% .06 262);border-radius:999px;padding:.5rem 1rem;font-weight:600;white-space:nowrap}
+footer{padding-block:3rem 2rem;color:var(--muted);font-size:.9rem}
+.foot{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.foot img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.foot nav{margin-left:auto;display:flex;gap:1.4rem;flex-wrap:wrap}
+.foot a{text-decoration:none;color:var(--muted);white-space:nowrap}
+dialog{border:1px solid var(--line);border-radius:1.2rem;background:var(--card);color:var(--ink);max-width:min(36rem,calc(100vw - 2rem));padding:2rem;box-shadow:0 40px 90px -20px oklch(0% 0 0/.45)}
+dialog::backdrop{background:oklch(12% .05 262 / .65);backdrop-filter:blur(4px)}
+dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
+#toast{position:fixed;left:50%;bottom:1.4rem;transform:translate(-50%,140%);background:var(--navy-deep);color:#fff;padding:.8rem 1.3rem;border-radius:999px;z-index:80;transition:transform .35s cubic-bezier(.2,.9,.3,1.2);font-weight:600;box-shadow:0 18px 40px -12px oklch(0% 0 0/.5)}
+#toast.show{transform:translate(-50%,0)}
+#palette{position:fixed;inset:0;z-index:70;display:none;place-items:start center;padding-top:12vh;background:oklch(12% .05 262/.6);backdrop-filter:blur(4px)}
+#palette.open{display:grid}
+.pal-box{width:min(34rem,calc(100vw - 2rem));background:var(--card);border:1px solid var(--line);border-radius:1.1rem;padding:1rem;box-shadow:0 40px 90px -20px oklch(0% 0 0/.5)}
+.pal-box input{width:100%;border:0;border-bottom:1.5px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:1.1rem;padding:.7rem .4rem;outline:none}
+.pal-list{list-style:none;margin:.6rem 0 0;padding:0;max-height:46vh;overflow:auto}
+.pal-list button{width:100%;text-align:left;background:none;border:0;color:var(--ink);padding:.7rem .6rem;border-radius:.6rem;display:flex;justify-content:space-between;gap:1rem}
+.pal-list button:hover,.pal-list button.sel{background:var(--paper2)}
+.pal-list small{color:var(--muted);font-family:var(--fm)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+#toTop{position:fixed;right:1.2rem;bottom:1.2rem;z-index:55;width:48px;height:48px;border-radius:50%;border:0;background:var(--gold);color:var(--navy-deep);font-size:1.2rem;font-weight:700;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 14px 30px -8px var(--glow)}
+#toTop.show{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (max-width:860px){.hero-grid,.contact{grid-template-columns:minmax(0,1fr)}.projects,.skills{grid-template-columns:minmax(0,1fr)}.portrait{max-width:22rem}.search{margin-left:0}.contact{padding:1.8rem}}
+@media (max-width:560px){.ch-head{grid-template-columns:minmax(0,1fr)}.timeline li{grid-template-columns:minmax(0,1fr);gap:.2rem}.list-card{grid-template-columns:minmax(0,1fr)}.list-card .side{justify-items:start}.nav-links{display:none}.counters{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}.counter b{font-size:1.35rem}.chip.c1{left:.4rem}}
+</style>
+</head>
+<body>
+<div id="progress"></div><div id="spot" aria-hidden="true"></div>
+
+<header class="nav"><div class="wrap nav-in">
+  <a class="brand" href="#top"><img src="assets/logo-houetor.jpg" alt="Logo HOUETOR"> Pierre Florent BOLOUVI</a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#projets" data-spy="projets">Projets</a><a href="#parcours" data-spy="parcours">Parcours</a>
+    <a href="#competences" data-spy="competences">Compétences</a><a href="#contact" data-spy="contact">Contact</a>
+  </nav>
+  <button class="icon-btn" id="palBtn" type="button" aria-label="Ouvrir la palette de navigation (Ctrl+K)" title="Ctrl+K">⌘</button>
+  <button class="icon-btn" id="themeBtn" type="button" aria-label="Basculer le thème clair / sombre" title="Thème clair / sombre">◐</button>
+  <a class="btn magnetic" href="#contact">Me contacter</a>
+</div></header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero"><canvas id="bg" aria-hidden="true"></canvas>
+ <div class="wrap hero-in"><div class="hero-grid">
+  <div>
+    <p class="eyebrow">ENS Natitingou · Bénin — MI2 · Fondateur HOUETOR</p>
+    <h1>Transformer des idées en <span class="gold">produits</span> <span class="outline">technologiques.</span></h1>
+    <p class="lede">Je suis <strong>Pierre Florent BOLOUVI</strong>, étudiant en MI2 et développeur en formation. Je conçois des logiciels, applications web et outils numériques intelligents, pensés pour des problèmes concrets et les réalités locales.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold magnetic" href="#projets">Explorer mes projets</a>
+      <a class="btn btn-ghost magnetic" href="https://github.com/bolouvipf" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost magnetic" href="https://linkedin.com/in/pierre-florent-bolouvi" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="counters" aria-label="Chiffres du portfolio">
+      <div class="counter"><b data-count="12">0</b><span>projets documentés ici</span></div>
+      <div class="counter"><b data-count="3">0</b><span>produits accessibles en ligne</span></div>
+      <div class="counter"><b data-count="6">0</b><span>technologies au cœur du travail</span></div>
+    </div>
+  </div>
+  <figure class="portrait" id="portrait">
+    <div class="frame"><img class="ph" src="assets/photo-pierre.png" alt="Portrait de Pierre Florent BOLOUVI" width="1254" height="1254"></div>
+    <span class="chip c1"><img src="assets/logo-houetor.jpg" alt=""> HOUETOR · houetor.com</span>
+    <span class="chip c2">Natitingou, Bénin</span>
+  </figure>
+ </div>
+ <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path id="wavePath" d="M0,30 C200,5 400,55 600,30 C800,5 1000,55 1200,30" fill="none" stroke="var(--gold)" stroke-width="3"/></svg>
+ </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<!-- 01 -->
+<section class="chapter wrap reveal" id="a-propos">
+  <div class="ch-head"><span class="ch-num">01</span><div><h2>À propos</h2><p>Apprendre, expérimenter, comprendre les besoins — puis construire.</p></div></div>
+  <div class="prose">
+    <p>Je m'intéresse à la conception de logiciels, aux applications web, aux outils numériques intelligents et à l'entrepreneuriat technologique. À travers mes projets, je cherche à transformer des problèmes concrets en produits numériques utiles, accessibles et adaptés aux réalités locales.</p>
+    <p>Je développe principalement autour de Python, JavaScript, PHP, SQL et des technologies web. Cliquez sur une technologie dans la section Compétences : elle filtrera les projets qui la mobilisent.</p>
+  </div>
+  <blockquote>Construire progressivement un écosystème de logiciels utiles, accessibles et durables, en partant de problèmes concrets.</blockquote>
+</section>
+
+<!-- 02 PROJETS -->
+<section class="chapter wrap reveal" id="projets">
+  <div class="ch-head"><span class="ch-num">02</span><div><h2>Explorateur de projets</h2><p>Filtrez par statut, cherchez par mot-clé, ouvrez la fiche détail de chaque projet. Astuces : touche <strong>/</strong> pour chercher, <strong>Ctrl+K</strong> pour naviguer.</p></div></div>
+
+  <div class="explorer">
+    <div class="filters" role="group" aria-label="Filtrer les projets par statut">
+      <button class="fbtn" type="button" data-filter="all" aria-pressed="true">Tous <small>12</small></button>
+      <button class="fbtn" type="button" data-filter="publie" aria-pressed="false">Publiés <small>4</small></button>
+      <button class="fbtn" type="button" data-filter="dev" aria-pressed="false">En développement <small>4</small></button>
+      <button class="fbtn" type="button" data-filter="proto" aria-pressed="false">Prototypes <small>4</small></button>
+    </div>
+    <label class="search">⌕ <input id="search" type="search" placeholder="Chercher un projet, une techno…" aria-label="Chercher un projet"> <kbd>/</kbd></label>
+  </div>
+  <p id="noresult">Aucun projet ne correspond. Essayez un autre mot-clé — ou <button class="fbtn" type="button" id="resetSearch">tout réafficher</button></p>
+
+  <div class="projects" id="projectGrid">
+    <article class="card feature" data-status="publie" data-tags="saas erp wordpress ia" data-name="HOUETOR studio technologique marque mère SaaS ERP outils numériques intelligents Afrique">
+      <span class="type">Studio technologique · marque mère</span><h3>HOUETOR</h3>
+      <p>Studio technologique dont la mission est de transformer des idées en produits technologiques : SaaS, ERP et outils numériques intelligents répondant à des problèmes réels, avec une attention particulière aux réalités africaines. HOUETOR est le cadre de plusieurs de mes projets logiciels.</p>
+      <span class="badge badge-live">Projet entrepreneurial actif</span>
+      <div class="actions"><a class="visit" href="https://houetor.com" target="_blank" rel="noopener">houetor.com →</a><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="publie" data-tags="php wordpress" data-name="Houetor Connect extension WordPress plugin PHP annonces produits formations">
+      <span class="type">Extension WordPress</span><h3>Houetor Connect</h3>
+      <p>Connecte un site WordPress à un compte HOUETOR pour afficher annonces, produits et formations. Plugin gratuit, sans verrouillage de fonctionnalités, approuvé et publié sur WordPress.org le 17 octobre 2026.</p>
+      <span class="badge badge-live">Publié sur WordPress.org</span>
+      <div class="actions"><a class="visit" href="https://wordpress.org/plugins/houetor-connect/" target="_blank" rel="noopener">Voir l'extension →</a><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="publie" data-tags="javascript ia web" data-name="JuriAgent assistant foncier intelligent Bénin titres fonciers héritages expropriations droit">
+      <span class="type">Assistant foncier intelligent</span><h3>JuriAgent</h3>
+      <p>Aide à comprendre les questions foncières au Bénin : titres fonciers, héritages, expropriations, terrains occupés, droits et procédures. Il explique les textes officiels et les démarches, sans se substituer à un avocat ou à une autorité compétente.</p>
+      <span class="badge badge-live">Démonstration en ligne</span>
+      <div class="actions"><a class="visit" href="https://juriagent.vercel.app/" target="_blank" rel="noopener">Essayer JuriAgent →</a><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="publie" data-tags="ia contenu video" data-name="Hell Cousins chaîne animée YouTube Shorts TikTok créatures 3D humour vidéo IA">
+      <span class="type">Création de contenu · chaîne animée</span><h3>Hell Cousins</h3>
+      <p>Chaîne de vidéos courtes en anglais (YouTube Shorts et TikTok) mettant en scène des créatures 3D originales dans des situations humoristiques du quotidien : dialogues courts, formats verticaux de 10 à 15 secondes, personnages réutilisables, production assistée par IA.</p>
+      <span class="badge">Lancé en novembre 2026</span>
+      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="dev" data-tags="php sql web sante" data-name="EasyHealth santé dossiers patients partage code journalisation chiffrement HL7 FHIR">
+      <span class="type">Santé · dossiers patients</span><h3>EasyHealth</h3>
+      <p>Gestion des dossiers patients et partage sécurisé d'informations médicales : partage par code, journalisation des accès, rôles et permissions, chiffrement, référence à HL7 FHIR R4. Orientations du projet — pas une certification réglementaire.</p>
+      <span class="badge">En développement</span>
+      <div class="actions"><a class="visit" href="https://easyhealth.houetor.com" target="_blank" rel="noopener">easyhealth.houetor.com →</a><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="dev" data-tags="web saas education" data-name="HouetorTeach plateforme enseignement en ligne cours examens apprenants">
+      <span class="type">Éducation · enseignement en ligne</span><h3>HouetorTeach</h3>
+      <p>Plateforme d'enseignement à distance : suivi des cours et des examens, visualisation et contact avec les apprenants ou candidats.</p>
+      <span class="badge">Produit en développement</span>
+      <div class="actions"><a class="visit" href="https://teach.houetor.com" target="_blank" rel="noopener">teach.houetor.com →</a><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="dev" data-tags="php wordpress ia" data-name="H.hare outil intelligent WordPress Houetor Connect Elementor intégration">
+      <span class="type">Outil intelligent · WordPress</span><h3>H.hare</h3>
+      <p>Outil de l'écosystème HOUETOR utilisant Houetor Connect pour simplifier l'intégration avec les sites WordPress, notamment dans des environnements Elementor.</p>
+      <span class="badge">Expérimentation</span>
+      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="dev" data-tags="web wiki" data-name="VibeWiki outil web wiki écosystème HOUETOR">
+      <span class="type">Outil web · wiki</span><h3>VibeWiki</h3>
+      <p>Outil wiki de l'écosystème HOUETOR, accessible en ligne. Fonctionnalités détaillées à préciser au fil du développement.</p>
+      <span class="badge">Accessible · en évolution</span>
+      <div class="actions"><a class="visit" href="https://vibewiki.houetor.com" target="_blank" rel="noopener">vibewiki.houetor.com →</a><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="proto" data-tags="javascript web offline" data-name="Consultation Fá Hounlêton application offline-first factures devis PDF Android synchronisation signe">
+      <span class="type">Application web offline-first</span><h3>Consultation de Fá — Hounlêton</h3>
+      <p>Gestion des consultations de Fá : enregistrement, recherche par signe principal, factures et devis, rapports PDF, multi-appareils avec synchronisation après usage hors ligne. Pensée pour Android et la simplicité d'usage.</p>
+      <span class="badge">Conception &amp; développement</span>
+      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="proto" data-tags="python ia agents" data-name="Agent vivant système agents intelligents identité transfert projet composants portefeuille">
+      <span class="type">Système d'agents intelligents</span><h3>Agent vivant</h3>
+      <p>Agents pouvant évoluer, gérer des projets et interagir avec leurs utilisateurs : agent lié à son créateur, transfert de projet, continuité d'identité, modification progressive, création de nouveaux agents à partir de composants existants.</p>
+      <span class="badge">Conception &amp; expérimentation</span>
+      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="proto" data-tags="entrepreneuriat industrie" data-name="Fabrication papier A4 projet industriel entrepreneurial bobines découpe conditionnement financement participatif Afrique de l'Ouest">
+      <span class="type">Projet industriel &amp; entrepreneurial</span><h3>Fabrication de papier A4</h3>
+      <p>Étude d'une activité de production de papier A4 à partir de bobines : approvisionnement, équipements de découpe, coûts, financement participatif — vers une production locale adaptée au marché ouest-africain.</p>
+      <span class="badge">Étude &amp; préparation</span>
+      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+    </article>
+
+    <article class="card" data-status="proto" data-tags="python ia architecture" data-name="Architectures modulaires recherches techniques noyau modules MCP WebAssembly environnements IA">
+      <span class="type">Recherches techniques</span><h3>Architectures modulaires &amp; agents</h3>
+      <p>Architectures noyau + modules indépendants, installation et mise à jour de modules, outils MCP, environnements de développement assistés par IA, alternatives à WebAssembly pour la modularité applicative.</p>
+      <span class="badge">Exploration</span>
+      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+    </article>
+  </div>
+</section>
+
+<!-- 03 PARCOURS -->
+<section class="chapter wrap reveal" id="parcours">
+  <div class="ch-head"><span class="ch-num">03</span><div><h2>Parcours</h2><p>Formation, expériences et rendez-vous qui comptent — survolez chaque étape.</p></div></div>
+  <ol class="timeline">
+    <li><span class="when">En cours</span><p><strong>MI2 — École normale supérieure de Natitingou, Bénin.</strong> Formation orientée mathématiques, informatique et sciences.</p></li>
+    <li><span class="when">2023–2024</span><p><strong>Stage d'enseignement.</strong> Transmission, organisation et communication.</p></li>
+    <li><span class="when">2025–2026</span><p><strong>Stage d'enseignement.</strong> Deuxième expérience en situation d'enseignement.</p></li>
+    <li><span class="when">Août 2026</span><p><strong>Certificat « IA pour tous »</strong> — APDE × ForceN.</p></li>
+    <li><span class="when">2026</span><p><strong>Green IT Tour BLOLAB</strong> à Natitingou · <strong>formation entrepreneuriale ForceN</strong> (FODE) · <strong>bootcamp BLOLAB</strong> du 28 au 30 sept. 2026 · <strong>pitch à l'hôtel KTA</strong>, Cotonou.</p></li>
+    <li><span class="when">17 oct. 2026</span><p><strong>Houetor Connect publié sur WordPress.org</strong> — première extension approuvée.</p></li>
+    <li><span class="when">Nov. 2026</span><p><strong>Lancement de Hell Cousins</strong>, chaîne animée YouTube Shorts et TikTok.</p></li>
+  </ol>
+</section>
+
+<!-- 04 COMPÉTENCES -->
+<section class="chapter wrap reveal" id="competences">
+  <div class="ch-head"><span class="ch-num">04</span><div><h2>Compétences</h2><p>Cliquez sur une technologie : l'explorateur de projets se filtre instantanément.</p></div></div>
+  <div class="skills">
+    <div class="skill"><h3>Développement — cliquez pour filtrer</h3>
+      <ul class="tags">
+        <li><button type="button" data-tech="python">Python</button></li>
+        <li><button type="button" data-tech="javascript">JavaScript</button></li>
+        <li><button type="button" data-tech="php">PHP</button></li>
+        <li><button type="button" data-tech="sql">SQL</button></li>
+        <li><button type="button" data-tech="wordpress">WordPress</button></li>
+        <li><button type="button" data-tech="ia">IA appliquée</button></li>
+      </ul></div>
+    <div class="skill"><h3>Domaines d'intérêt</h3>
+      <ul class="tags">
+        <li><button type="button" data-tech="saas">SaaS</button></li>
+        <li><button type="button" data-tech="erp">ERP &amp; gestion</button></li>
+        <li><button type="button" data-tech="offline">Offline-first</button></li>
+        <li><button type="button" data-tech="agents">Agents intelligents</button></li>
+        <li><button type="button" data-tech="web">Applications web</button></li>
+        <li><button type="button" data-tech="video">Contenu vidéo</button></li>
+      </ul></div>
+    <div class="skill"><h3>Approche de travail</h3>
+      <ol class="steps"><li>Identifier un problème concret</li><li>Concevoir une solution adaptée</li><li>Développer et expérimenter</li><li>Tester les possibilités techniques</li><li>Améliorer progressivement</li></ol></div>
+  </div>
+</section>
+
+<!-- 05 CONTACT -->
+<section class="chapter wrap reveal" id="contact" style="border-top:none;padding-top:1rem">
+  <div class="contact">
+    <div>
+      <p class="eyebrow">05 · Contact</p><h2>Un projet, une idée, une opportunité ?</h2>
+      <p>Je développe des produits qui répondent à des besoins réels — logiciels, SaaS, outils IA — pensés pour les réalités africaines. Parlons de ce qu'on peut construire d'utile ensemble.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold magnetic" href="mailto:contact@houetor.com">Écrire à contact@houetor.com</a>
+        <button class="copy-btn magnetic" id="copyMail" type="button">Copier l'email</button>
+      </div>
+    </div>
+    <ul class="contact-links">
+      <li>Site HOUETOR — <a href="https://houetor.com" target="_blank" rel="noopener">houetor.com</a></li>
+      <li>GitHub — <a href="https://github.com/bolouvipf" target="_blank" rel="noopener">github.com/bolouvipf</a></li>
+      <li>LinkedIn — <a href="https://linkedin.com/in/pierre-florent-bolouvi" target="_blank" rel="noopener">pierre-florent-bolouvi</a></li>
+      <li>JuriAgent — <a href="https://juriagent.vercel.app/" target="_blank" rel="noopener">juriagent.vercel.app</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="wrap"><div class="foot">
+  <img src="assets/logo-houetor.jpg" alt="Logo HOUETOR">
+  <span>© 2026 Pierre Florent BOLOUVI · HOUETOR — Transformer des idées en produits technologiques.</span>
+  <nav aria-label="Pied de page"><a href="#projets">Projets</a><a href="#parcours">Parcours</a><a href="#contact">Contact</a><a href="#top">Haut de page</a></nav>
+</div></footer>
+
+<dialog id="modal" aria-labelledby="mTitle">
+  <span class="type" id="mType"></span><h3 id="mTitle"></h3><p id="mBody"></p>
+  <p><span class="badge" id="mBadge"></span></p>
+  <div class="cta-row"><a class="btn" id="mLink" href="#" target="_blank" rel="noopener" hidden>Ouvrir le projet →</a>
+  <button class="details" id="mClose" type="button">Fermer (Échap)</button></div>
+</dialog>
+
+<div id="palette" role="dialog" aria-modal="true" aria-label="Palette de navigation">
+  <div class="pal-box"><input id="palInput" type="text" placeholder="Aller à… (section ou projet)" aria-label="Aller à une section ou un projet">
+  <ul class="pal-list" id="palList"></ul></div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<button id="toTop" type="button" aria-label="Retour en haut">↑</button>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* thème */
+const root=document.documentElement;
+const saved=localStorage.getItem('pfb-theme'); if(saved) root.dataset.theme=saved;
+$('#themeBtn').addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('pfb-theme',root.dataset.theme);toast(root.dataset.theme==='dark'?'Thème sombre activé':'Thème clair activé');});
+
+/* marquee */
+const words=['Python','JavaScript','PHP','SQL','WordPress','IA appliquée','SaaS','Offline-first','Agents intelligents','HOUETOR','Natitingou · Bénin'];
+$('#marquee').innerHTML=(words.concat(words)).map(w=>`<span>${w} ✦</span>`).join('');
+
+/* fond animé : particules reliées, réactives à la souris */
+(()=>{const c=$('#bg'),x=c.getContext('2d');let W,H,pts=[],mx=-999,my=-999;
+const resize=()=>{const r=c.parentElement.getBoundingClientRect();W=c.width=r.width;H=c.height=r.height;
+ pts=Array.from({length:Math.min(90,W/14)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,r:Math.random()*1.8+.6,g:Math.random()<.22}));};
+resize();addEventListener('resize',resize);
+c.parentElement.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
+c.parentElement.addEventListener('pointerleave',()=>{mx=my=-999});
+(function loop(){x.clearRect(0,0,W,H);
+ for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+  const d=Math.hypot(p.x-mx,p.y-my);if(d<130){p.x+=(p.x-mx)/d*.7;p.y+=(p.y-my)/d*.7;}
+  x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle=p.g?'#d9a92c':'rgba(140,175,235,.8)';x.fill();}
+ for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+  if(d<115){x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.strokeStyle=`rgba(120,160,230,${(1-d/115)*.28})`;x.stroke();}}
+ if(!reduced)requestAnimationFrame(loop);})();})();
+
+/* vague animée */
+(()=>{const p=$('#wavePath');let t=0;(function w(){t+=.02;
+ p.setAttribute('d',`M0,30 C200,${8+Math.sin(t)*14} 400,${52-Math.cos(t*1.3)*12} 600,30 C800,${8+Math.cos(t*.8)*14} 1000,${52-Math.sin(t)*12} 1200,30`);
+ if(!reduced)requestAnimationFrame(w);})();})();
+
+/* spotlight + tilt + magnétique */
+const spot=$('#spot');
+addEventListener('pointermove',e=>{spot.style.left=e.clientX+'px';spot.style.top=e.clientY+'px';},{passive:true});
+$$('.card,.list-card').forEach(el=>{
+ el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+  el.style.setProperty('--mx',px*100+'%');el.style.setProperty('--my',py*100+'%');
+  if(!reduced&&matchMedia('(hover:hover)').matches)el.style.transform=`perspective(900px) rotateY(${(px-.5)*5}deg) rotateX(${(.5-py)*5}deg) translateY(-2px)`;});
+ el.addEventListener('pointerleave',()=>el.style.transform='');});
+const portrait=$('#portrait');
+if(portrait&&!reduced){addEventListener('pointermove',e=>{const r=portrait.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+ portrait.style.transform=`perspective(1000px) rotateY(${(e.clientX-cx)/90}deg) rotateX(${-(e.clientY-cy)/90}deg)`;},{passive:true});}
+$$('.magnetic').forEach(b=>{b.addEventListener('pointermove',e=>{if(reduced)return;const r=b.getBoundingClientRect();
+ b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28}px)`;});
+ b.addEventListener('pointerleave',()=>b.style.transform='');});
+
+/* compteurs */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);
+ const end=+e.target.dataset.count,t0=performance.now();(function n(t){const k=Math.min((t-t0)/1100,1);
+ e.target.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(n);})(t0);}),{threshold:.5});
+$$('[data-count]').forEach(el=>cio.observe(el));
+
+/* reveal + progress + spy + toTop */
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}}),{threshold:.1});
+$$('.reveal').forEach(el=>rio.observe(el));
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.spy===e.target.id));}),{rootMargin:'-40% 0px -55% 0px'});
+$$('main section[id]').forEach(s=>spy.observe(s));
+addEventListener('scroll',()=>{const h=document.documentElement,p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+ $('#progress').style.width=p+'%';$('#toTop').classList.toggle('show',h.scrollTop>700);},{passive:true});
+$('#toTop').addEventListener('click',()=>scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
+
+/* explorateur : filtres + recherche + tags */
+const cards=$$('#projectGrid .card');let status='all',query='',tech='';
+function apply(){let n=0;cards.forEach(c=>{const ok=(status==='all'||c.dataset.status===status)
+ &&(!tech||(c.dataset.tags||'').includes(tech))
+ &&(!query||c.dataset.name.toLowerCase().includes(query));
+ c.hidden=!ok;if(ok)n++;});$('#noresult').style.display=n?'none':'block';}
+$$('.fbtn[data-filter]').forEach(b=>b.addEventListener('click',()=>{
+ $$('.fbtn[data-filter]').forEach(o=>o.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
+ status=b.dataset.filter;apply();}));
+$('#search').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();apply();});
+$('#resetSearch').addEventListener('click',()=>{query=tech='';$('#search').value='';
+ $$('.tags button').forEach(b=>b.classList.remove('on'));status='all';
+ $$('.fbtn[data-filter]').forEach(o=>o.setAttribute('aria-pressed',String(o.dataset.filter==='all')));apply();});
+$$('.tags button').forEach(b=>b.addEventListener('click',()=>{
+ const on=b.classList.contains('on');$$('.tags button').forEach(o=>o.classList.remove('on'));
+ tech=on?'':b.dataset.tech;if(!on)b.classList.add('on');apply();
+ document.getElementById('projets').scrollIntoView({behavior:reduced?'auto':'smooth'});
+ toast(on?'Filtre retiré':'Projets filtrés : '+b.textContent.trim());}));
+
+/* fiches détail */
+const modal=$('#modal');
+$$('.details').forEach(btn=>btn.addEventListener('click',()=>{
+ const card=btn.closest('.card,.list-card');if(!card)return;
+ $('#mType').textContent=card.querySelector('.type')?.textContent||'Projet';
+ $('#mTitle').textContent=card.querySelector('h3').textContent;
+ $('#mBody').textContent=card.querySelector('p').textContent;
+ $('#mBadge').textContent=card.querySelector('.badge')?.textContent||'';
+ const link=card.querySelector('a.visit'),ml=$('#mLink');
+ if(link){ml.href=link.href;ml.hidden=false;}else ml.hidden=true;
+ modal.showModal();}));
+$('#mClose').addEventListener('click',()=>modal.close());
+modal.addEventListener('click',e=>{if(e.target===modal)modal.close();});
+
+/* toast + copie email */
+let toastT;function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600);}
+$('#copyMail').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('contact@houetor.com');toast('Email copié : contact@houetor.com');}
+ catch{toast('contact@houetor.com');}});
+
+/* palette Ctrl+K */
+const pal=$('#palette'),palIn=$('#palInput'),palList=$('#palList');
+const dests=[['Section · Projets','#projets'],['Section · Parcours','#parcours'],['Section · Compétences','#competences'],['Section · Contact','#contact'],['Section · À propos','#a-propos'],
+ ...cards.map(c=>[ 'Projet · '+c.querySelector('h3').textContent,'#projets']),
+ ['Lien · GitHub','https://github.com/bolouvipf'],['Lien · LinkedIn','https://linkedin.com/in/pierre-florent-bolouvi'],['Lien · HOUETOR','https://houetor.com']];
+function renderPal(q=''){const items=dests.filter(d=>d[0].toLowerCase().includes(q.toLowerCase()));
+ palList.innerHTML=items.map((d,i)=>`<li><button type="button" data-href="${d[1]}" class="${i===0?'sel':''}"><span>${d[0]}</span><small>↵</small></button></li>`).join('')||'<li><button type="button"><span>Aucun résultat</span></button></li>';
+ palList.querySelectorAll('button[data-href]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.href)));}
+function go(h){closePal();if(h.startsWith('http'))open(h,'_blank','noopener');else document.querySelector(h)?.scrollIntoView({behavior:reduced?'auto':'smooth'});}
+function openPal(){pal.classList.add('open');renderPal();palIn.value='';setTimeout(()=>palIn.focus(),30);}
+function closePal(){pal.classList.remove('open');}
+$('#palBtn').addEventListener('click',openPal);
+pal.addEventListener('click',e=>{if(e.target===pal)closePal();});
+palIn.addEventListener('input',()=>renderPal(palIn.value));
+palIn.addEventListener('keydown',e=>{const items=[...palList.querySelectorAll('button[data-href]')];if(!items.length)return;
+ let i=items.findIndex(b=>b.classList.contains('sel'));
+ if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();items[i]?.classList.remove('sel');i=(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;items[i].classList.add('sel');items[i].scrollIntoView({block:'nearest'});}
+ if(e.key==='Enter'&&items[Math.max(i,0)])go(items[Math.max(i,0)].dataset.href);});
+addEventListener('keydown',e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('open')?closePal():openPal();}
+ if(e.key==='Escape')closePal();
+ if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)&&!modal.open){e.preventDefault();$('#search').focus();document.getElementById('projets').scrollIntoView({behavior:reduced?'auto':'smooth'});}});
+</script>
+</body>
+</html>
