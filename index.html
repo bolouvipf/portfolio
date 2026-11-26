@@ -24,7 +24,7 @@
   --muted:oklch(48% .03 258); --line:oklch(88% .015 250); --focus:oklch(58% .16 245);
   --glow:oklch(72% .14 82 / .35);
   --fd:"Space Grotesk",system-ui,sans-serif; --fb:"Inter",system-ui,sans-serif; --fm:"JetBrains Mono",ui-monospace,monospace;
-  --r:16px; --max:76rem;
+  --r:16px; --max:88rem;
 }
 [data-theme="dark"]{
   --paper:oklch(16% .04 262); --paper2:oklch(20% .045 262); --card:oklch(21% .05 262);
@@ -34,7 +34,7 @@
 *{box-sizing:border-box}
 html,body{overflow-x:clip}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.0625rem;line-height:1.65;transition:background .4s,color .4s}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.7;transition:background .4s,color .4s}
 ::selection{background:var(--gold);color:var(--navy-deep)}
 img{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--fd);font-style:normal;line-height:1.1;margin:0;overflow-wrap:anywhere;min-width:0}
@@ -69,10 +69,10 @@ button{font:inherit;cursor:pointer}
 .hero{position:relative;overflow:clip;background:var(--navy-deep);color:oklch(96% .01 250);border-radius:0 0 2rem 2rem}
 #bg{position:absolute;inset:0;width:100%;height:100%;opacity:.85}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--navy-deep));pointer-events:none}
-.hero-in{position:relative;z-index:2;padding-block:4.5rem 4rem}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);gap:3rem;align-items:center}
+.hero-in{position:relative;z-index:2;padding-block:5.5rem 4.5rem;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);gap:3.5rem;align-items:center}
 .eyebrow{font-family:var(--fm);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem}
-.hero h1{font-size:clamp(2.5rem,6.2vw,4.4rem);font-weight:700;letter-spacing:-.02em}
+.hero h1{font-size:clamp(2.8rem,6.8vw,5.4rem);font-weight:700;letter-spacing:-.02em}
 .hero h1 .gold{color:var(--gold)}
 .hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px oklch(85% .04 250)}
 .lede{font-size:1.22rem;color:oklch(84% .03 250);max-width:34rem;margin:1.4rem 0}
@@ -98,8 +98,23 @@ button{font:inherit;cursor:pointer}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
 /* chapters */
-.chapter{padding-block:4.5rem;border-top:1px solid var(--line);position:relative;z-index:1}
-.ch-head{display:grid;grid-template-columns:4.6rem minmax(0,1fr);gap:1.4rem;margin-bottom:2.6rem;align-items:start}
+.chapter{padding-block:6rem;border-top:1px solid var(--line);position:relative;z-index:1}
+.ch-head{display:grid;grid-template-columns:4.6rem minmax(0,1fr);gap:1.4rem;margin-bottom:3rem;align-items:start}
+.ch-head h2{font-size:clamp(2rem,4vw,3rem)!important}
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+.service{border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;background:var(--card)}
+.service .n{font-family:var(--fm);color:var(--gold-deep);font-weight:700}
+.service h3{font-size:1.5rem;margin:.6rem 0}
+.service p{color:var(--muted);margin:0}
+.feature-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:3rem;align-items:center}
+.feature-split img{border:1px solid var(--line);border-radius:1.2rem;width:100%;box-shadow:0 30px 60px -25px oklch(20% .08 262/.45)}
+.faq{display:grid;gap:.8rem;max-width:52rem}
+.faq details{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:1.2rem 1.5rem}
+.faq summary{font-family:var(--fd);font-weight:600;font-size:1.12rem;cursor:pointer;list-style:none}
+.faq summary::after{content:"+";float:right;color:var(--gold-deep);font-size:1.4rem;line-height:1}
+.faq details[open ] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin:.8rem 0 0}
+@media (max-width:860px){.services,.feature-split{grid-template-columns:minmax(0,1fr)}}
 .ch-num{font-family:var(--fm);font-weight:700;color:var(--navy-deep);background:var(--gold);border-radius:999px;width:3.3rem;height:3.3rem;display:grid;place-items:center;box-shadow:0 8px 22px -6px var(--glow)}
 .ch-head h2{font-size:clamp(1.7rem,3.5vw,2.4rem)}
 .ch-head p{color:var(--muted);margin:.4rem 0 0;max-width:42rem}
@@ -248,6 +263,17 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
   <blockquote>Construire progressivement un écosystème de logiciels utiles, accessibles et durables, en partant de problèmes concrets.</blockquote>
 </section>
 
+<!-- SERVICES -->
+<section class="chapter wrap reveal" id="services">
+  <div class="ch-head"><span class="ch-num">✦</span><div><h2>Ce que je construis</h2><p>Quatre terrains de jeu, un même objectif : des produits utiles, pensés pour les réalités locales.</p></div></div>
+  <div class="services">
+    <article class="service"><span class="n">/ 01</span><h3>Applications web &amp; SaaS</h3><p>Des outils métiers accessibles depuis un navigateur : plateformes d'enseignement (HouetorTeach), de santé (EasyHealth), wikis et espaces de travail. Conception centrée sur le problème réel, puis amélioration progressive.</p></article>
+    <article class="service"><span class="n">/ 02</span><h3>Extensions WordPress</h3><p>Des plugins gratuits, publiés et maintenus sur WordPress.org — Houetor Connect en est la preuve : connecté, approuvé, en production. Intégrations Elementor et écosystèmes de sites existants.</p></article>
+    <article class="service"><span class="n">/ 03</span><h3>Assistants &amp; agents IA</h3><p>Des assistants spécialisés qui expliquent et guident à partir de sources officielles, comme JuriAgent pour le foncier béninois — sans jamais se substituer aux professionnels compétents.</p></article>
+    <article class="service"><span class="n">/ 04</span><h3>Applications offline-first</h3><p>Des applications qui fonctionnent sans connexion et synchronisent ensuite : indispensables là où le réseau n'est pas garanti. Gestion de consultations, factures, PDF et multi-appareils.</p></article>
+  </div>
+</section>
+
 <!-- 02 PROJETS -->
 <section class="chapter wrap reveal" id="projets">
   <div class="ch-head"><span class="ch-num">02</span><div><h2>Explorateur de projets</h2><p>Filtrez par statut, cherchez par mot-clé, ouvrez la fiche détail de chaque projet. Astuces : touche <strong>/</strong> pour chercher, <strong>Ctrl+K</strong> pour naviguer.</p></div></div>
@@ -352,6 +378,19 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
   </div>
 </section>
 
+<!-- À LA UNE -->
+<section class="chapter wrap reveal" id="a-la-une">
+  <div class="ch-head"><span class="ch-num">✦</span><div><h2>Projet à la une : JuriAgent</h2><p>L'assistant foncier qui rend le droit béninois compréhensible.</p></div></div>
+  <div class="feature-split">
+    <div>
+      <p class="prose" style="font-size:1.15rem">« Votre terrain, vos droits, expliqués simplement. » JuriAgent aide chacun à comprendre les titres fonciers, les héritages, les expropriations et les procédures — à partir des <strong>textes officiels de la République du Bénin</strong>.</p>
+      <p class="prose" style="color:var(--muted)">Il explique, il ne juge pas : JuriAgent ne remplace ni un avocat, ni l'ANDF. C'est un premier pas pour savoir quels documents réunir, quelle démarche suivre, et quand consulter un professionnel.</p>
+      <div class="cta-row"><a class="btn btn-gold magnetic" href="https://juriagent.vercel.app/" target="_blank" rel="noopener">Essayer JuriAgent en direct</a></div>
+    </div>
+    <img src="assets/capture-juriagent.jpg" alt="Capture de JuriAgent : Votre terrain, vos droits, expliqués simplement" loading="lazy" width="799" height="863">
+  </div>
+</section>
+
 <!-- 03 PARCOURS -->
 <section class="chapter wrap reveal" id="parcours">
   <div class="ch-head"><span class="ch-num">03</span><div><h2>Parcours</h2><p>Formation, expériences et rendez-vous qui comptent — survolez chaque étape.</p></div></div>
@@ -393,11 +432,26 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
   </div>
 </section>
 
-<!-- 05 CONTACT -->
+<!-- 05 VISION & FAQ -->
+<section class="chapter wrap reveal" id="vision">
+  <div class="ch-head"><span class="ch-num">05</span><div><h2>Vision &amp; questions fréquentes</h2><p>Où je vais, et ce qu'on me demande souvent.</p></div></div>
+  <div class="prose">
+    <p>Je souhaite développer des produits technologiques qui répondent à des besoins réels. Mon ambition : construire progressivement un écosystème de logiciels utiles, accessibles et durables, en partant de problèmes concrets — en explorant ce que le développement logiciel et l'intelligence artificielle permettent de créer pour les réalités africaines.</p>
+  </div>
+  <div class="faq" style="margin-top:2.2rem">
+    <details><summary>Quels types de projets puis-je réaliser ?</summary><p>Applications web et SaaS, extensions WordPress, assistants IA spécialisés et applications offline-first. Exemples en production : Houetor Connect (WordPress.org) et JuriAgent (démo en ligne).</p></details>
+    <details><summary>Avec quelles technologies je travaille ?</summary><p>Principalement Python, JavaScript, PHP, SQL, HTML et CSS — autour des applications web, de WordPress et de l'IA appliquée.</p></details>
+    <details><summary>Qu'est-ce que HOUETOR ?</summary><p>Mon studio technologique : « Transformer des idées en produits technologiques. » Il encadre mes produits SaaS, ERP et outils numériques intelligents, pensés pour les réalités africaines.</p></details>
+    <details><summary>Où suis-je basé ?</summary><p>À Natitingou, au Bénin, où je suis étudiant en MI2 à l'École normale supérieure. Je travaille aussi à distance.</p></details>
+    <details><summary>Comment me contacter ?</summary><p>Par email à <a href="mailto:contact@houetor.com">contact@houetor.com</a>, via LinkedIn, ou en explorant mes dépôts sur GitHub.</p></details>
+  </div>
+</section>
+
+<!-- 06 CONTACT -->
 <section class="chapter wrap reveal" id="contact" style="border-top:none;padding-top:1rem">
   <div class="contact">
     <div>
-      <p class="eyebrow">05 · Contact</p><h2>Un projet, une idée, une opportunité ?</h2>
+      <p class="eyebrow">06 · Contact</p><h2>Un projet, une idée, une opportunité ?</h2>
       <p>Je développe des produits qui répondent à des besoins réels — logiciels, SaaS, outils IA — pensés pour les réalités africaines. Parlons de ce qu'on peut construire d'utile ensemble.</p>
       <div class="cta-row">
         <a class="btn btn-gold magnetic" href="mailto:contact@houetor.com">Écrire à contact@houetor.com</a>
