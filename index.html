@@ -8,6 +8,7 @@
 <meta property="og:title" content="Pierre Florent BOLOUVI — Portfolio">
 <meta property="og:description" content="Transformer des idées en produits technologiques. HOUETOR, Houetor Connect, JuriAgent, EasyHealth…">
 <meta property="og:image" content="assets/photo-pierre.png">
+<link rel="canonical" href="https://portfolio.houetor.com/">
 <link rel="icon" href="assets/logo-houetor.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,6 +125,8 @@ blockquote{margin:2rem 0;padding:1.5rem;border-left:4px solid var(--gold);backgr
 .card::before{content:"";position:absolute;inset:0;background:radial-gradient(340px circle at var(--mx) var(--my),var(--glow),transparent 65%);opacity:0;transition:opacity .25s;pointer-events:none}
 .card:hover::before{opacity:.5}
 .card h3{font-size:1.35rem}.card p{color:var(--muted);margin:0;flex:1}
+.shot{border:1px solid var(--line);border-radius:.7rem;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:var(--paper2)}
+#mShot{border:1px solid var(--line);border-radius:.7rem;width:100%;max-height:16rem;object-fit:cover;object-position:top;margin-bottom:1rem}
 .type{font-family:var(--fm);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
 .badge{align-self:flex-start;font-size:.78rem;font-weight:600;padding:.22rem .65rem;border-radius:999px;background:var(--paper2);color:var(--ink);border:1px solid var(--line)}
 .badge-live{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)}
@@ -270,6 +273,7 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
 
     <article class="card" data-status="publie" data-tags="php wordpress" data-name="Houetor Connect extension WordPress plugin PHP annonces produits formations">
       <span class="type">Extension WordPress</span><h3>Houetor Connect</h3>
+      <img class="shot" src="assets/capture-houetor-connect.jpg" alt="Capture de la page WordPress de l'extension Houetor Connect : gratuite, version 1.0.6, testée jusqu'à WordPress 7.1.5" loading="lazy" width="1920" height="890">
       <p>Connecte un site WordPress à un compte HOUETOR pour afficher annonces, produits et formations. Plugin gratuit, sans verrouillage de fonctionnalités, approuvé et publié sur WordPress.org le 17 octobre 2026.</p>
       <span class="badge badge-live">Publié sur WordPress.org</span>
       <div class="actions"><a class="visit" href="https://wordpress.org/plugins/houetor-connect/" target="_blank" rel="noopener">Voir l'extension →</a><button class="details" type="button">Fiche détail</button></div>
@@ -277,6 +281,7 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
 
     <article class="card" data-status="publie" data-tags="javascript ia web" data-name="JuriAgent assistant foncier intelligent Bénin titres fonciers héritages expropriations droit">
       <span class="type">Assistant foncier intelligent</span><h3>JuriAgent</h3>
+      <img class="shot" src="assets/capture-juriagent.jpg" alt="Capture de JuriAgent : « Votre terrain, vos droits, expliqués simplement », assistant foncier du Bénin basé sur les textes officiels" loading="lazy" width="799" height="863">
       <p>Aide à comprendre les questions foncières au Bénin : titres fonciers, héritages, expropriations, terrains occupés, droits et procédures. Il explique les textes officiels et les démarches, sans se substituer à un avocat ou à une autorité compétente.</p>
       <span class="badge badge-live">Démonstration en ligne</span>
       <div class="actions"><a class="visit" href="https://juriagent.vercel.app/" target="_blank" rel="noopener">Essayer JuriAgent →</a><button class="details" type="button">Fiche détail</button></div>
@@ -286,7 +291,7 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
       <span class="type">Création de contenu · chaîne animée</span><h3>Hell Cousins</h3>
       <p>Chaîne de vidéos courtes en anglais (YouTube Shorts et TikTok) mettant en scène des créatures 3D originales dans des situations humoristiques du quotidien : dialogues courts, formats verticaux de 10 à 15 secondes, personnages réutilisables, production assistée par IA.</p>
       <span class="badge">Lancé en novembre 2026</span>
-      <div class="actions"><button class="details" type="button">Fiche détail</button></div>
+      <div class="actions"><a class="visit" href="https://www.youtube.com/@HellCousins" target="_blank" rel="noopener">YouTube →</a><a class="visit" href="https://www.tiktok.com/@hellcousins" target="_blank" rel="noopener">TikTok →</a><button class="details" type="button">Fiche détail</button></div>
     </article>
 
     <article class="card" data-status="dev" data-tags="php sql web sante" data-name="EasyHealth santé dossiers patients partage code journalisation chiffrement HL7 FHIR">
@@ -416,6 +421,7 @@ dialog h3{font-size:1.6rem;margin:.4rem 0 .8rem}dialog p{color:var(--muted)}
 </div></footer>
 
 <dialog id="modal" aria-labelledby="mTitle">
+  <img id="mShot" alt="" hidden>
   <span class="type" id="mType"></span><h3 id="mTitle"></h3><p id="mBody"></p>
   <p><span class="badge" id="mBadge"></span></p>
   <div class="cta-row"><a class="btn" id="mLink" href="#" target="_blank" rel="noopener" hidden>Ouvrir le projet →</a>
@@ -520,6 +526,8 @@ $$('.details').forEach(btn=>btn.addEventListener('click',()=>{
  $('#mTitle').textContent=card.querySelector('h3').textContent;
  $('#mBody').textContent=card.querySelector('p').textContent;
  $('#mBadge').textContent=card.querySelector('.badge')?.textContent||'';
+ const shot=card.querySelector('img.shot'),ms=$('#mShot');
+ if(shot){ms.src=shot.src;ms.alt=shot.alt;ms.hidden=false;}else ms.hidden=true;
  const link=card.querySelector('a.visit'),ml=$('#mLink');
  if(link){ml.href=link.href;ml.hidden=false;}else ml.hidden=true;
  modal.showModal();}));
